@@ -1,17 +1,27 @@
-#from app.models import db, Card
+from app.models.card import db, Card
 import requests
 import os
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_cards():
-    data_source_url = os.environ.get('DATA_SOURCE_URL')
-    r = requests.get(data_source_url)
-    cards = r.json()
-    #for card in cards:
-        #print(card['name'], card['type_line']) 
-    print(cards[0]['image_uris'])
-    print(len('https://c1.scryfall.com/file/scryfall-cards/border_crop/front/0/0/0000579f-7b35-4ed3-b44c-db2a538066fe.jpg?1562894979'))
+    pass
+    # data_source_url = os.environ.get('DATA_SOURCE_URL')
+    # r = requests.get(data_source_url)
+    # cards_data = r.json()
+    # for card_data in cards_data:
+    #     card = Card(
+    #         name = card_data['name'],
+    #         type = card_data['type_line'],
+    #         price = card_data['prices']['usd'],
+    #         price_foil = card_data['prices']['usd_foil'],
+    #         small_url = card_data['image_uris']['small'],
+    #         img_url = card_data['image_uris']['border_crop'],
+    #         art_img = card_data['image_uris']['art_crop']
+    #     )
+    #     db.session.add(card)
+    # db.session.commit()
+
 
 seed_cards()
 # Uses a raw SQL query to TRUNCATE the users table.
@@ -20,4 +30,4 @@ seed_cards()
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_cards():
-    pass
+    db.session.execute('TRUNCATE cards RESTART IDENTITY CASCADE;')
