@@ -3,27 +3,31 @@ import requests
 import os
 
 
-# Adds a demo user, you can add other users here if you want
+# pull the external url of the bulk data store from Scryfall API. Then pulls out card data, and adds to database.
+# It takes up to an hour and half to create all the database records. 
 def seed_cards():
-    pass
-    # data_source_url = os.environ.get('DATA_SOURCE_URL')
-    # r = requests.get(data_source_url)
-    # cards_data = r.json()
-    # for card_data in cards_data:
-    #     card = Card(
-    #         name = card_data['name'],
-    #         type = card_data['type_line'],
-    #         price = card_data['prices']['usd'],
-    #         price_foil = card_data['prices']['usd_foil'],
-    #         small_url = card_data['image_uris']['small'],
-    #         img_url = card_data['image_uris']['border_crop'],
-    #         art_img = card_data['image_uris']['art_crop']
-    #     )
-    #     db.session.add(card)
-    # db.session.commit()
+    cards = []
+    data_source_url = os.environ.get('DATA_SOURCE_URL')
+    r = requests.get(data_source_url)
+    cards_data = r.json()
+    for card in cards_data:
+        if card.get('image_uris'):
+            cards.append(
+                Card(
+                    name = card['name'],
+                    type = card['type_line'],
+                    price = card['prices']['usd'],
+                    price_foil = card['prices']['usd_foil'],
+                    small_url = card['image_uris']['small'],
+                    img_url = card['image_uris']['border_crop'],
+                    art_img = card['image_uris']['art_crop']
+                )
+            )
+            db.session.add_all(cards)
+            db.session.commit()
+    
 
 
-seed_cards()
 # Uses a raw SQL query to TRUNCATE the users table.
 # SQLAlchemy doesn't have a built in function to do this
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
