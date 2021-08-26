@@ -42,7 +42,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <img src={planeswalker} alt="planeswalker symbol" className="center-planeswalker"/>
+          <img src={planeswalker} alt="planeswalker symbol" className="center--planeswalker"/>
         </ Route>
       </Switch>
     </BrowserRouter>

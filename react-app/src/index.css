@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 
-.center-planeswalker {
+.center--planeswalker {
     display: block;
     margin-top: 10em;
     margin-left: auto;
@@ -35,3 +35,5 @@
     color: #0f2840;
     box-shadow: 1px 1px 3px #0f2840;
 }
+
+
