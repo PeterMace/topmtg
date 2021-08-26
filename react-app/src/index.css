@@ -1,1 +1,37 @@
 /* TODO Add site wide styles */
+
+.center-planeswalker {
+    display: block;
+    margin-top: 10em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+  }
+
+.form--container{
+    position: relative;
+    left: 50%;
+    margin-top: 20%;
+    float: left;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: -50%;
+    bottom: -50%;
+    background: #d3dfff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #0f2840;
+    box-shadow: 1px 1px 3px #0f2840;
+}
+
+.form input{
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #0f2840;
+    box-shadow: 1px 1px 3px #0f2840;
+}

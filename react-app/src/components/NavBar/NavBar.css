@@ -1,0 +1,22 @@
+
+
+.navbar-container{
+    position: fixed;
+    top: -1px;
+    left: 0px;
+    right: 0px;
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    list-style-type: none;
+    background-color: #181664;
+    z-index: 5;
+    box-shadow: 0px 5px 0.4em black;
+}
+
+
+.navbar-container *{
+    margin: 0px;
+}
