@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { createDeck } from '../../store/deck';
+import { getDecks } from '../../store/deck';
 
 export const CreateDeckForm = () => {
     const [errors, setErrors] = useState([]);
@@ -11,7 +11,7 @@ export const CreateDeckForm = () => {
   
     const onSubmit = async (e) => {
         e.preventDefault();
-        const data = await dispatch(createDeck(name, description, user));
+        const data = await dispatch(getDecks(name, description, user));
         if (data) {
           setErrors(data)
         }

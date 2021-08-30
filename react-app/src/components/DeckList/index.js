@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { createDeck } from '../../store/deck';
+import { getDecks } from '../../store/deck';
 
 export const DeckList = () => {
     const decks = useSelector(state => state.decks);
@@ -8,26 +8,32 @@ export const DeckList = () => {
   
     const onSubmit = async (e) => {
         e.preventDefault();
-        const data = await dispatch(createDeck(name, description, user));
-        if (data) {
-          setErrors(data)
-        }
+        const data = await dispatch(getDecks());
+        // if (data) {
+        //   setErrors(data)
+        // }
+        console.log(data);
     };
+
+    useEffect(async () => {
+        const data = await dispatch(getDecks());
+        // if (data) {
+        //   setErrors(data)
+        // }
+        console.log(data);
+        // return () => {
+        //     cleanup
+        // }
+    }, [])
 
     
-    const updateDescription = (e) => {
-        setDescription(e.target.value);
-    };
 
-    const updateName = (e) => {
-        setName(e.target.value);
-    };
   
 
 
     return (
     <div className="form--container">
-        <form onSubmit ={onSubmit} className="form">
+        {/* <form onSubmit ={onSubmit} className="form">
             <div>
                 {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
@@ -52,7 +58,7 @@ export const DeckList = () => {
                 ></input>
             </div>
             <button type='submit'>Create Deck</button>
-        </form>
+        </form> */}
     </div>
     )
 }

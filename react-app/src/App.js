@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import {CreateDeckForm} from './components/CreateDeckForm';
+import { DeckList } from './components/DeckList';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -45,6 +46,7 @@ function App() {
         <Route path='/' exact={true} >
           <img src={planeswalker} alt="planeswalker symbol" className="center--planeswalker"/>
           <CreateDeckForm />
+          <DeckList />
         </ Route>
       </Switch>
     </BrowserRouter>
