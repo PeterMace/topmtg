@@ -45,7 +45,7 @@ export const createDeck = (name, description, user) => async (dispatch) => {
 }
 
 export const getDecks = () => async (dispatch) => {
-  const response = await fetch('/api/decks/all', {
+  const response = await fetch('/api/decks/all/', {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
