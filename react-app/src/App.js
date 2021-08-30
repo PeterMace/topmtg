@@ -50,6 +50,7 @@ function App() {
         <Route path='/' exact={true} >
           <img src={planeswalker} alt="planeswalker symbol" className="center--planeswalker"/>
           <CreateDeckForm />
+          
           <DeckList />
         </ Route>
       </Switch>
