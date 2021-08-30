@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { getDecks } from '../../store/deck';
+import { createDeck } from '../../store/deck';
 
 export const CreateDeckForm = () => {
     const [errors, setErrors] = useState([]);
@@ -11,7 +11,7 @@ export const CreateDeckForm = () => {
   
     const onSubmit = async (e) => {
         e.preventDefault();
-        const data = await dispatch(getDecks(name, description, user));
+        const data = await dispatch(createDeck(name, description, user));
         if (data) {
           setErrors(data)
         }
@@ -32,7 +32,7 @@ export const CreateDeckForm = () => {
     <div className="form--container">
         <form onSubmit ={onSubmit} className="form">
             <div>
-                {errors.map((error, ind) => (
+                { errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
                 ))}
             </div>

@@ -19,7 +19,7 @@ export const DeckList = () => {
     return (
     <div className="form--container">
         <ul>
-           {decksList.map((deck)=>{
+           {decksList?.map((deck)=>{
                return (
                 <NavLink key={deck.id} to={`/decks/${deck.id}`}> {deck.name}
                 <br />
