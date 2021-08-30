@@ -10,4 +10,5 @@ class Card(db.Model):
     small_url = db.Column(db.String(130), nullable=False) 
     img_url = db.Column(db.String(130), nullable=False) 
     art_img = db.Column(db.String(130), nullable=False)
+    commander_card = db.relationship("Deck", back_populates="card")
 
