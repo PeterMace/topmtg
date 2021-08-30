@@ -9,8 +9,9 @@ export const DeckDisplay = () => {
     const deck = decks[deckId]
     console.log(deck, decks, deckId);
     return (
-        <div>
-            
+        <div> deck Here
+            {deck?.name}
+            {deck?.description}
         </div>
     )
 }
