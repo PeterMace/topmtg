@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('decks',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=55), nullable=False),
-    sa.Column('description', sa.String(length=55), nullable=False),
+    sa.Column('description', sa.String(length=500), nullable=True),
     sa.Column('commander', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['commander'], ['cards.id'], ),
     sa.PrimaryKeyConstraint('id')
