@@ -12,6 +12,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import planeswalker from './images/planeswalker.png'
+import { CardSearch } from './components/CardSearch';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,7 +51,7 @@ function App() {
         <Route path='/' exact={true} >
           <img src={planeswalker} alt="planeswalker symbol" className="center--planeswalker"/>
           <CreateDeckForm />
-          
+          <CardSearch />
           <DeckList />
         </ Route>
       </Switch>
