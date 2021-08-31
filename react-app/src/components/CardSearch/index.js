@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import SearchField from "react-search-field";
 
 export const CardSearch = () => {
     const [cardName, setCardName] = useState('');
-    const [result, setResults] = useState([]);
+    const [results, setResults] = useState([]);
 
     useEffect(()=>{
         async function fetchCardResults(){
@@ -12,25 +13,33 @@ export const CardSearch = () => {
                     'Content-Type': 'application/json',
                 },
             });
-            const cardResults = await searchResults.json();
-            console.log(cardResults);
+            const results = await searchResults.json();
+            results.cards.map((card)=>{
+                console.log(card)
+            })
+            setResults(results.cards);
         }
         fetchCardResults()
     }, [cardName])
 
-    const updateCardName = (e) => {
-        setCardName(e.target.value);
+    const updateCardName = (value, e) => {
+        setCardName(value);
     };
 
     return (
         <div>
             <label>Card Name</label>
-            <input
-            type='text'
-            name='name'
+            <SearchField
+            placeholder="Search for a card"
             onChange={updateCardName}
-            value={cardName}
-            ></input>
+            searchText="Search for a card"
+            classNames="test-class"
+            />
+
+            {results?.map((card)=>(
+                    <div>{card.name}
+                    </div>
+            ))}
         </div>
     )
 }
