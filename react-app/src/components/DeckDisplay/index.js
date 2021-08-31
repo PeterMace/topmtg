@@ -45,7 +45,7 @@ export const DeckDisplay = () => {
             {editForm}
             {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
             {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
-            <CardSearch />
+            <CardSearch deckId={deckId}/>
         </div>
     )
 }
