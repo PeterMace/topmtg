@@ -1,5 +1,6 @@
 from flask import Blueprint, session, request
 from flask_login import login_required, current_user
+from sqlalchemy import select
 from app.models import Deck, deck_cards, db
 from app.forms import DeckForm
 from app.api.error_handler import validation_errors_to_error_messages
@@ -29,6 +30,20 @@ def deck_form():
 def get_all_decks():
     decks = Deck.query.all()
     return {'decks': [deck.to_dict() for deck in decks]}    
+
+
+@deck_routes.route('/<int:deck_id>/cards', methods=['GET'])
+@login_required
+def get_deck_card(deck_id):
+    print("deck result",deck_id)
+    #the c in the filter stands for criteria and must be present
+    card_results = []
+    #Loop through results to pull the cardId value of each tuple in the query result.
+    for result in db.session.query(deck_cards.c.card_id).filter(deck_cards.c.deck_id==deck_id).all():
+        card_results.append(result[0])
+    
+    #result the normalized data for redux. {15: [204, 1652, 1332, 2763, 2559, 3134, 3627, 5027, 1549, 3005, 84, 1420, 3234, 6142, 6619, 504, 2038, 6882, 2914, 6912, 130, 1727, 1438, 2195, 8012, 275, 634, 1134, 1100, 4486]}
+    return {"deckId": deck_id, "cardResults": card_results}   
 
 
 @deck_routes.route('/<int:id>')
@@ -80,3 +95,5 @@ def add_deck_card(deckId):
         db.session.execute(deck_card_insert) 
         db.session.commit()
         return {'cardId':content['cardId'],'deckId':deckId}
+
+

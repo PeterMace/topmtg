@@ -4,9 +4,9 @@ const ADD_CARD = 'deck_card/ADD_CARD';
 const REMOVE_CARD = 'deck_card/REMOVE_CARD';
 
 
-const loadCards = (deckId) => ({
+const loadCards = (payload) => ({
     type: LOAD_CARDS,
-    deckId
+    payload
 });
 
 const addCard = (payload) => ({
@@ -45,27 +45,27 @@ export const addDeckCard = (cardId, deckId) => async (dispatch) => {
     }
 }
 
-// export const getDeck = (id) => async (dispatch) => {
-//   const response = await fetch(`/api/decks/${id}`, {
-//       method: 'GET',
-//       headers: {
-//           'Content-Type': 'application/json',
-//       },
-//   });
+export const getDeckCards = (id) => async (dispatch) => {
+  const response = await fetch(`/api/decks/${id}/cards`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  });
   
-//   if (response.ok) {
-//       const data = await response.json();
-//       dispatch(addDeck(data))
-//       return data;
-//   } else if (response.status < 500) {
-//       const data = await response.json();
-//       if (data.errors) {
-//           return data.errors;
-//       }
-//   } else {
-//       return ['An error occurred. Please try again.']
-//   }
-// }
+  if (response.ok) {
+      const data = await response.json();
+      dispatch(loadCards(data))
+      return data;
+  } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+          return data.errors;
+      }
+  } else {
+      return ['An error occurred. Please try again.']
+  }
+}
 
 // export const deleteDeck = (id) => async (dispatch) => {
 //   const response = await fetch(`/api/decks/${id}/delete`, {
@@ -95,15 +95,12 @@ const initialState = {  };
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case LOAD_CARDS: {
-          const allDecks = {};
-          action.payload.decks.forEach(deck => {
-            allDecks[deck.id] = deck;
-          });
-          return {
-            ...allDecks,
-            ...state,
-          };
-        }
+                const newState = {
+                  ...state,
+                  [action.payload.deckId] : action.payload.cardResults
+                };
+                return newState;
+            }
         case ADD_CARD: {
             if (!state[action.payload.deckId]) {
               const newState = {
