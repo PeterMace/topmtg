@@ -70,14 +70,12 @@ def delete_deck(id):
 @login_required
 def add_deck_card(deckId):
     content = request.json
-    print("response content",content, deckId)
     deck_card_insert = deck_cards.insert().values(
         card_id = content['cardId'], 
         deck_id = deckId
     )
 
     deck = Deck.query.get(deckId)
-    print("deck", deck.to_dict(), current_user.id)
     if current_user.id == deck.userId:
         db.session.execute(deck_card_insert) 
         db.session.commit()

@@ -9,10 +9,9 @@ const loadCards = (deckId) => ({
     deckId
 });
 
-const addCard = (deckId, cardId) => ({
+const addCard = (payload) => ({
   type: ADD_CARD,
-  deckId, 
-  cardId
+  payload
 });
 
 const removeCard = (id) => ({
@@ -106,18 +105,19 @@ export default function reducer(state = initialState, action) {
           };
         }
         case ADD_CARD: {
-            if (!state[action.deckId]) {
+            if (!state[action.payload.deckId]) {
               const newState = {
                 ...state,
-                [action.deckId] : [action.cardId]
+                [action.payload.deckId] : [action.payload.cardId]
               };
               return newState;
             }
-            return {
-              ...state,
-              [action.deckId]: 
-                state[action.deckId].push(action.cardId)
-            };
+            console.log(state[action.payload.deckId]);
+            const newState = {
+                ...state,
+                [action.payload.deckId] : [...state[action.payload.deckId], action.payload.cardId]
+              };
+            return newState;
           }
         case REMOVE_CARD: {
             const newState = { ...state };
