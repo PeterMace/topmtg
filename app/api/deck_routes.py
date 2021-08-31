@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request
 from flask_login import login_required, current_user
-from app.models import Deck, Card, db
+from app.models import Deck, deck_cards, db
 from app.forms import DeckForm
 from app.api.error_handler import validation_errors_to_error_messages
 deck_routes = Blueprint('decks', __name__)
@@ -64,3 +64,18 @@ def delete_deck(id):
         db.session.delete(deck)
         db.session.commit()
         return {"id":id}
+
+
+@deck_routes.route('/<int:deckId>/add', methods=['POST'])
+@login_required
+def add_deck_card(deckId):
+    content = request.json
+    deck_card = deck_cards(
+        card_id = content['cardId'],
+        deck_id = deckId
+    )
+    deck = Deck.query.get(deckId)
+    if current_user.id == deck.userId:
+        db.session.add(deck_card)
+        db.session.commit()
+        return {'cardId':content['cardId'],'deckId':deckId}

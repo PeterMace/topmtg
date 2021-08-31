@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import SearchField from "react-search-field";
+import { AddDeckCard } from '../AddDeckCard';
 
 export const CardSearch = () => {
     const [cardName, setCardName] = useState('');
@@ -27,7 +28,6 @@ export const CardSearch = () => {
         <div>
             <label>Card Name</label>
             <SearchField
-            placeholder="Search for a card"
             onChange={updateCardName}
             searchText="Search for a card"
             classNames="test-class"
@@ -37,6 +37,7 @@ export const CardSearch = () => {
                     <div>
                         <img height="50px"src={card.art_img} margin="10px"></img>
                         {card.name}
+                        <AddDeckCard />
                     </div>
             ))}
         </div>
