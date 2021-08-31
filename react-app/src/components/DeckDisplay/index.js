@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import {getDeck, deleteDeck} from '../../store/deck';
 import './DeckDisplay.css';
 import {UpdateDeckForm} from '../UpdateDeckForm';
+import { CardSearch } from '../CardSearch';
 
 export const DeckDisplay = () => {
     const { deckId }  = useParams();
@@ -23,7 +24,6 @@ export const DeckDisplay = () => {
 
     let editForm = null;
     if (showEditForm){
-        console.log("show the form")
         editForm = (
             <div>
             <UpdateDeckForm deck={deck} hideForm={() => setShowEditForm(false)} />
@@ -45,6 +45,7 @@ export const DeckDisplay = () => {
             {editForm}
             {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
             {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
+            <CardSearch />
         </div>
     )
 }

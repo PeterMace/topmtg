@@ -17,7 +17,6 @@ const NavBar = () => {
 
   function closeModal() {
     setIsModalOpen(false);
-    console.log("closing", isModalOpen)
   }
 
   return (

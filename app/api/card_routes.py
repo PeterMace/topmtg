@@ -6,8 +6,10 @@ card_routes = Blueprint('cards', __name__)
 @card_routes.route('/search/<cardName>')
 def search_cards(cardName):
     cardName = cardName.lower()
-    print(cardName)
     search = "%{}%".format(cardName)
-    cards = Card.query.filter(func.lower(Card.name).like(func.lower(search))).all()
-    print(cards)
+
+    #The following searchs for cards for names based on substring logic. 
+    #The func.lower makes the search case agnostic as both are cast to be lowercase. 
+    #We limit the response size to improve result load times when results are massive(1000+ records).
+    cards = Card.query.filter(func.lower(Card.name).like(func.lower(search))).limit(20).all()
     return {'cards': [card.to_search_dict() for card in cards]}   

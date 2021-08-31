@@ -58,7 +58,6 @@ export const updateDeck = (deckId, name, description, user) => async (dispatch) 
           "userId" : user.id
       }),
   });
-  
   if (response.ok) {
       const data = await response.json();
       dispatch(addDeck(data))

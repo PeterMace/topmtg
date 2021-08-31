@@ -11,11 +11,13 @@ export const UpdateDeckForm = ({deck, hideForm}) => {
   
     const onSubmit = async (e) => {
         e.preventDefault();
-        const data = await dispatch(updateDeck(deck.id, name, description, user));
-        if (data) {
-          setErrors(data)
+        const responseErrors = await dispatch(updateDeck(deck.id, name, description, user));
+        if (responseErrors) {
+            setErrors(responseErrors)
         }
-        hideForm();
+        if(!responseErrors) {
+            hideForm();
+        }    
     };
     
     const updateDescription = (e) => {

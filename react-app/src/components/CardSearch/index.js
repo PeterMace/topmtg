@@ -14,9 +14,6 @@ export const CardSearch = () => {
                 },
             });
             const results = await searchResults.json();
-            results.cards.map((card)=>{
-                console.log(card)
-            })
             setResults(results.cards);
         }
         fetchCardResults()
@@ -37,7 +34,9 @@ export const CardSearch = () => {
             />
 
             {results?.map((card)=>(
-                    <div>{card.name}
+                    <div>
+                        <img height="50px"src={card.art_img} margin="10px"></img>
+                        {card.name}
                     </div>
             ))}
         </div>
