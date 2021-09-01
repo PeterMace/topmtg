@@ -47,9 +47,15 @@ export const DeckDisplay = () => {
 
     return (
         <div className="deck-container">
-            {deck?.name}
+            <div className="deck-name">
+                {deck?.name}
+            </div>
+
+            <div className="deck-description">
+                {deck?.description}
+            </div>
             <br />
-            {deck?.description}
+            
             {editForm}
             {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
             {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
