@@ -1,5 +1,5 @@
 
-import React, {useState,} from 'react';
+import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux'
@@ -13,47 +13,64 @@ const NavBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isAuthenticated = useSelector(state => state.session.user)
 
-  function openModal() {
+  function flipModal() {
     setIsModalOpen(true);
   }
 
   function closeModal() {
     setIsModalOpen(false);
   }
+  console.log(isModalOpen)
 
   return (
     <nav className="navbar-container">
-          <NavLink to='/' exact={true} activeClassName='active'>
-            <img src={topmtgImage} alt="Logo"/>
-          </NavLink>
+          <div>
+            <NavLink to='/' exact={true} activeClassName='active'>
+              <img src={topmtgImage} alt="Logo"/>
+            </NavLink>
+          </div>
+        
+          <div>
 
+          </div>
+
+          <div className="auth-links__container">
           { !isAuthenticated && 
             <>
-              <NavLink to='/login' exact={true} activeClassName='active'>
-                Login
-              </NavLink>
-
+              <div className="auth-link">
+                <NavLink to='/login' exact={true} activeClassName='active'>
+                  Login
+                </NavLink>
+              </div>
+              <div className="auth-link">
               <NavLink to='/sign-up' exact={true} activeClassName='active'>
                 Sign Up
               </NavLink>
+              </div >
             </>
           }
+          
+          {isAuthenticated && <LogoutButton />}
 
-          <button onClick={openModal} className="navbar-profile">
+          </div>
+         
+          {/* <button onClick={flipModal} className="navbar-profile">
             <img src={profile} className="navbar-profile__image" alt="create" />
           </button>
           
+          
           <Modal
             isOpen={isModalOpen}
-            onRequestClose={closeModal}
             className="navbar-modal"
             overlayClassName="navbar-modal__overlay"
             ariaHideApp={false}
             parentSelector={() => document.querySelector(".navbar-profile")}
-            // ariaHideApp={false}
           >
-            <LogoutButton />
-          </Modal>
+           
+
+
+            
+          </Modal> */}
     </nav>
   );
 }

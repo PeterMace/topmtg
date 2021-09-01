@@ -5,13 +5,14 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import {CreateDeckForm} from './components/CreateDeckForm';
 import {DeckDisplay} from './components/DeckDisplay';
-import { DeckList } from './components/DeckList';
+import {SplashPage} from './components/SplashPage';
+
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import planeswalker from './images/planeswalker.png'
+
 
 
 function App() {
@@ -49,9 +50,7 @@ function App() {
           <DeckDisplay />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <img src={planeswalker} alt="planeswalker symbol" className="center--planeswalker"/>
-          <CreateDeckForm />
-          <DeckList />
+          <SplashPage />
         </ Route>
       </Switch>
     </BrowserRouter>

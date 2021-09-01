@@ -17,20 +17,13 @@ export const DeckList = () => {
     }, [])
 
     return (
-    <div className="form--container">
-        <ul>
+    <div className="decklist-container">
            {decksList?.map((deck)=>{
                return (
                 <NavLink key={deck.id} to={`/decks/${deck.id}`}> {deck.name}
-                <br />
-                {/* <div
-                  className="browser-image"
-                  style={{ backgroundImage: `url('${deck.imageUrl}')` }}
-                ></div> */}
                 </NavLink>
                )
            })}
-        </ul>
     </div>
     )
 }
