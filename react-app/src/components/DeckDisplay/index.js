@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import {getDeck, deleteDeck} from '../../store/deck';
+import {getDeckCards} from '../../store/deck_cards'
 import './DeckDisplay.css';
 import {UpdateDeckForm} from '../UpdateDeckForm';
 import { CardSearch } from '../CardSearch';
+import { CardDisplay } from '../CardDisplay'
 
 export const DeckDisplay = () => {
     const { deckId }  = useParams();
@@ -13,13 +15,20 @@ export const DeckDisplay = () => {
     const decks = useSelector(state => state.deck);
     const [showEditForm, setShowEditForm] = useState(false);
     const deck = decks[deckId]
+    
     const isOwner = userId === deck?.userId;
 
     useEffect(()=>{
-        async function fetchData(){
+        async function fetchDeckData(){
             const data = await dispatch(getDeck(deckId));
+            
         }
-        fetchData();
+        fetchDeckData();
+        async function fetchCardData(){
+            const data = await dispatch(getDeckCards(deckId));
+            console.log(data);
+        }
+        fetchCardData();
     }, [])
 
     let editForm = null;
@@ -45,7 +54,8 @@ export const DeckDisplay = () => {
             {editForm}
             {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
             {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
-            <CardSearch />
+            <CardSearch deckId={deckId}/>
+            <CardDisplay deckId={deckId}/>
         </div>
     )
 }

@@ -1,20 +1,23 @@
 import React, {useState, useEffect} from 'react'
 import SearchField from "react-search-field";
+import { AddDeckCard } from '../AddDeckCard';
 
-export const CardSearch = () => {
+export const CardSearch = ({deckId}) => {
     const [cardName, setCardName] = useState('');
     const [results, setResults] = useState([]);
 
     useEffect(()=>{
         async function fetchCardResults(){
-            const searchResults = await fetch(`/api/cards/search/${cardName}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const results = await searchResults.json();
-            setResults(results.cards);
+            if(cardName){
+                const searchResults = await fetch(`/api/cards/search/${cardName}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const results = await searchResults.json();
+                setResults(results.cards);
+            }
         }
         fetchCardResults()
     }, [cardName])
@@ -23,22 +26,24 @@ export const CardSearch = () => {
         setCardName(value);
     };
 
+    deckId = parseInt(deckId);
     return (
         <div>
             <label>Card Name</label>
             <SearchField
-            placeholder="Search for a card"
             onChange={updateCardName}
             searchText="Search for a card"
             classNames="test-class"
             />
-
+            <ul>
             {results?.map((card)=>(
-                    <div>
+                    <li key={card.id}>
                         <img height="50px"src={card.art_img} margin="10px"></img>
                         {card.name}
-                    </div>
+                        <AddDeckCard cardId={card.id} deckId={deckId} />
+                    </li>
             ))}
+            </ul>
         </div>
     )
 }

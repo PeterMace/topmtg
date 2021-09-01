@@ -9,7 +9,20 @@ def search_cards(cardName):
     search = "%{}%".format(cardName)
 
     #The following searchs for cards for names based on substring logic. 
-    #The func.lower makes the search case agnostic as both are cast to be lowercase. 
+    #The func.lower makes the search case agnostic as both values in the comparision are cast to be lowercase. 
     #We limit the response size to improve result load times when results are massive(1000+ records).
     cards = Card.query.filter(func.lower(Card.name).like(func.lower(search))).limit(20).all()
     return {'cards': [card.to_search_dict() for card in cards]}   
+
+
+@card_routes.route('/', methods=['POST'])
+def get_cards():
+    content = request.json
+    print("request content",content)
+    IDs = content['cardIds']
+    cardData = Card.query.filter(Card.id.in_(IDs)).all()
+    #The following searchs for cards for names based on substring logic. 
+    #The func.lower makes the search case agnostic as both are cast to be lowercase. 
+    #We limit the response size to improve result load times when results are massive(1000+ records).
+    
+    return {card.id: card.to_dict() for card in cardData}   
