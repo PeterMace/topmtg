@@ -33,13 +33,9 @@ export const fetchCards = (cardIds) => async (dispatch) => {
 }
 
 
-
-
-
 const initialState = {  };
 
 export default function reducer(state = initialState, action) {
-    console.log("where's my payload", action)
     switch (action.type) {
         case LOAD_CARDS: {
                 const newState = {

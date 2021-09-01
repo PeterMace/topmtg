@@ -6,7 +6,6 @@ export const AddDeckCard = ({cardId, deckId}) => {
     const dispatch = useDispatch();
     const onAdd = async (e) => {
         e.preventDefault();
-        console.log(cardId, deckId);
         const responseErrors = await dispatch(addDeckCard(cardId, deckId));  
     };
 
