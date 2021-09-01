@@ -6,6 +6,7 @@ import {getDeckCards} from '../../store/deck_cards'
 import './DeckDisplay.css';
 import {UpdateDeckForm} from '../UpdateDeckForm';
 import { CardSearch } from '../CardSearch';
+import { CardDisplay } from '../CardDisplay'
 
 export const DeckDisplay = () => {
     const { deckId }  = useParams();
@@ -14,6 +15,7 @@ export const DeckDisplay = () => {
     const decks = useSelector(state => state.deck);
     const [showEditForm, setShowEditForm] = useState(false);
     const deck = decks[deckId]
+    
     const isOwner = userId === deck?.userId;
 
     useEffect(()=>{
@@ -53,6 +55,7 @@ export const DeckDisplay = () => {
             {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
             {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
             <CardSearch deckId={deckId}/>
+            <CardDisplay deckId={deckId}/>
         </div>
     )
 }
