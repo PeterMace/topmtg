@@ -4,3 +4,36 @@
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
 }
+
+.deck-name{
+    grid-column: 2 / 3;
+    grid-row: 2;
+    text-align: center;
+}
+
+.deck-description{
+    grid-column: 2 / 3;
+    grid-row: 3;
+    text-align: center;
+}
+
+.card-search{
+    grid-column: 2 / 3;
+    grid-row: 4;
+    position: center;
+}
+
+.deck-cards{
+    grid-column: 1 / 4;
+    grid-row: 5 / 6;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: center;
+    flex-wrap: wrap;
+}
+
+.deck-buttons{
+    grid-column: 3 / 3;
+    grid-row: 3;
+}

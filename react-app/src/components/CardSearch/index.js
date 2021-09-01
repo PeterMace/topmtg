@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SearchField from "react-search-field";
 import { AddDeckCard } from '../AddDeckCard';
+import './CardSearch.css';
 
 export const CardSearch = ({deckId}) => {
     const [cardName, setCardName] = useState('');
@@ -38,9 +39,11 @@ export const CardSearch = ({deckId}) => {
             <ul>
             {results?.map((card)=>(
                     <li key={card.id}>
-                        <img height="50px"src={card.art_img} margin="10px"></img>
-                        {card.name}
-                        <AddDeckCard cardId={card.id} deckId={deckId} />
+                        <span className="search-result">
+                            <img height="50px"src={card.art_img} ></img>
+                            {card.name}
+                            <AddDeckCard cardId={card.id} deckId={deckId} />
+                        </span>
                     </li>
             ))}
             </ul>

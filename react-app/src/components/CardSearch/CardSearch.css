@@ -1,0 +1,9 @@
+.search-result{
+    display: flex;
+    align-items: center;
+    justify-content: fle;
+}
+
+.addCard-Button{
+    justify-content: right;
+}
