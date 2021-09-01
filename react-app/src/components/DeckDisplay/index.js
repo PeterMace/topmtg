@@ -26,7 +26,6 @@ export const DeckDisplay = () => {
         fetchDeckData();
         async function fetchCardData(){
             const data = await dispatch(getDeckCards(deckId));
-            console.log(data);
         }
         fetchCardData();
     }, [])

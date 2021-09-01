@@ -1,7 +1,8 @@
 
-import React, {useState} from 'react';
+import React, {useState,} from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import { useSelector } from 'react-redux'
 import Modal from "react-modal";
 import './NavBar.css';
 
@@ -10,6 +11,7 @@ import profile from '../../images/profile.png';
 
 const NavBar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isAuthenticated = useSelector(state => state.session.user)
 
   function openModal() {
     setIsModalOpen(true);
@@ -40,11 +42,13 @@ const NavBar = () => {
           <button onClick={openModal} className="navbar-profile">
             <img src={profile} className="navbar-profile__image" alt="create" />
           </button>
+          
           <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
             className="navbar-modal"
             overlayClassName="navbar-modal__overlay"
+            ariaHideApp={false}
             parentSelector={() => document.querySelector(".navbar-profile")}
             // ariaHideApp={false}
           >

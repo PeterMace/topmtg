@@ -16,7 +16,6 @@ export const CardDisplay = ({deckId}) => {
             if(cards_needed){
                 await dispatch(fetchCards(cards_needed));
             }
-            console.log(cards);
         }
         fetchCardResults()
     }, [deckId, deck_cards])

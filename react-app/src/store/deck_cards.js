@@ -109,7 +109,6 @@ export default function reducer(state = initialState, action) {
               };
               return newState;
             }
-            console.log(state[action.payload.deckId]);
             const newState = {
                 ...state,
                 [action.payload.deckId] : [...state[action.payload.deckId], action.payload.cardId]
