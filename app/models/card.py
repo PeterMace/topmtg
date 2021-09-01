@@ -16,7 +16,7 @@ class Card(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'art_img' : self.art_img,
+            'small_url' : self.small_url,
         }
 
     def to_dict(self):

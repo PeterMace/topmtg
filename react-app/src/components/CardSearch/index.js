@@ -40,7 +40,7 @@ export const CardSearch = ({deckId}) => {
             {results?.map((card)=>(
                     <li key={card.id}>
                         <span className="search-result">
-                            <img height="50px"src={card.art_img} ></img>
+                            <img height="50px"src={card.small_url} ></img>
                             {card.name}
                             <AddDeckCard cardId={card.id} deckId={deckId} />
                         </span>

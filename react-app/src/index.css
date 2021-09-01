@@ -1,12 +1,24 @@
-/* TODO Add site wide styles */
+body{
+    background-color: rgb(231, 231, 231);
+}
 
-.center--planeswalker {
-    display: block;
-    margin-top: 10em;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25em;
+
+
+body::after {
+    content: "";
+    background: url("./images/planeswalker.png");
+    opacity: 0.65;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 325px;
   }
+
 
 .form--container{
     position: relative;
@@ -39,4 +51,12 @@
 
 ul {
     list-style-type: none;
+}
+
+* {
+    font-family: Roboto, "Trebuchet MS", Verdana, sans-serif;
+}
+
+button{
+    border-radius: 3px;
 }
