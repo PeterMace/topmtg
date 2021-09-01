@@ -27,17 +27,17 @@ const NavBar = () => {
             <img src={topmtgImage} alt="Logo"/>
           </NavLink>
 
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
+          { !isAuthenticated && 
+            <>
+              <NavLink to='/login' exact={true} activeClassName='active'>
+                Login
+              </NavLink>
 
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
+              <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                Sign Up
+              </NavLink>
+            </>
+          }
 
           <button onClick={openModal} className="navbar-profile">
             <img src={profile} className="navbar-profile__image" alt="create" />

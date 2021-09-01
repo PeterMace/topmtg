@@ -10,8 +10,6 @@ export const AddDeckCard = ({cardId, deckId}) => {
     };
 
     return (
-        <div>
-            <button onClick={onAdd}>+</button>
-        </div>
+            <button className="addCard-Button" onClick={onAdd}>+</button>
     )
 }

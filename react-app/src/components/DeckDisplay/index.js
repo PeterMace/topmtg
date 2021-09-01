@@ -57,10 +57,16 @@ export const DeckDisplay = () => {
             <br />
             
             {editForm}
-            {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
-            {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
-            <CardSearch deckId={deckId}/>
-            <CardDisplay deckId={deckId}/>
+            <div className="deck-buttons">
+                {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
+                {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
+            </div>
+            <div className="card-search">
+                <CardSearch deckId={deckId} />
+            </div>
+            <div className="deck-cards">
+                <CardDisplay deckId={deckId} />
+            </div>
         </div>
     )
 }

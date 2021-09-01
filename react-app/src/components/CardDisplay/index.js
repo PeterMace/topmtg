@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { fetchCards } from '../../store/card';
 import { useDispatch, useSelector } from 'react-redux'
+import './CardDisplay.css';
 
 export const CardDisplay = ({deckId}) => {
     const [cardName, setCardName] = useState('');
@@ -26,15 +27,11 @@ export const CardDisplay = ({deckId}) => {
 
     deckId = parseInt(deckId);
     return (
-        <div>
-
-            <ul>
+        <div className="card-container">         
             {cards && cards_needed?.map((card)=>(
-                    <li key={cards[card]?.id}>
-                        <img height="320px"src={cards[card]?.img_url} margin="10px"></img>
-                    </li>
+                        <img key={cards[card]?.id} 
+                        height="320px"src={cards[card]?.img_url} margin="10px"></img>
             ))}
-            </ul>
         </div>
     )
 }
