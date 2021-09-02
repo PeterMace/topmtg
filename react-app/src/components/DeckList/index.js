@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import { getDecks } from '../../store/deck';
+import './DeckList.css'
 
 export const DeckList = () => {
     //const decks = useSelector(state => state.decks);
@@ -17,13 +18,16 @@ export const DeckList = () => {
     }, [])
 
     return (
-    <div className="decklist-container">
-           {decksList?.map((deck)=>{
-               return (
-                <NavLink key={deck.id} to={`/decks/${deck.id}`}> {deck.name}
-                </NavLink>
-               )
-           })}
+    <div className="decklist-page">
+        <div className="decklist-container">
+            {decksList?.map((deck)=>{
+                
+                return (
+                    <NavLink key={deck.id} to={`/decks/${deck.id}`}> {deck.name}
+                    </NavLink>
+                )
+            })}
+        </div>
     </div>
     )
 }
