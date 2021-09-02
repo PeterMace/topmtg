@@ -52,7 +52,9 @@ body::after {
     border-radius: 5px;
     color: #0f2840;
     box-shadow: 1px 1px 3px #0f2840;
-    padding: 45px;
+    margin: 0px;
+    width: 20em;
+    height: 20em;
 }
 
 
