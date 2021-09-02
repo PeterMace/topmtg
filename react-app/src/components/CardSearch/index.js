@@ -26,6 +26,11 @@ export const CardSearch = ({deckId}) => {
     const updateCardName = (value, e) => {
         setCardName(value);
     };
+    
+    const resetSearch = () =>{
+        setCardName("");
+        setResults([]);
+    }
 
     deckId = parseInt(deckId);
     return (
@@ -46,7 +51,7 @@ export const CardSearch = ({deckId}) => {
                         <span className="search-result">
                             <img key={card.id} height="50px"src={card.small_url} ></img>
                             {card.name}
-                            <AddDeckCard cardId={card.id} deckId={deckId} />
+                            <AddDeckCard cardId={card.id} deckId={deckId} resetSearch={resetSearch}/>
                         </span>
                     </li>
             ))}

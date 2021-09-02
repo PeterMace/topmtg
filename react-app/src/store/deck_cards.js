@@ -67,27 +67,30 @@ export const getDeckCards = (id) => async (dispatch) => {
   }
 }
 
-// export const deleteDeck = (id) => async (dispatch) => {
-//   const response = await fetch(`/api/decks/${id}/delete`, {
-//       method: 'POST',
-//       headers: {
-//           'Content-Type': 'application/json',
-//       },
-//   });
+export const fetchDeckCard = (cardId, deckId) => async (dispatch) => {
+  const response = await fetch(`/api/decks/${deckId}/delete`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        cardId, 
+      }),
+  });
   
-//   if (response.ok) {
-//       const deckId = await response.json();
-//       dispatch(removeDeck(deckId.id))
-//       return deckId;
-//   } else if (response.status < 500) {
-//       const data = await response.json();
-//       if (data.errors) {
-//           return data.errors;
-//       }
-//   } else {
-//       return ['An error occurred. Please try again.']
-//   }
-// }
+  if (response.ok) {
+      const deckId = await response.json();
+      //dispatch(removeDeck(deckId.id))
+      return deckId;
+  } else if (response.status < 500) {
+      const data = await response.json();
+      if (data.errors) {
+          return data.errors;
+      }
+  } else {
+      return ['An error occurred. Please try again.']
+  }
+}
 
 
 const initialState = {  };
