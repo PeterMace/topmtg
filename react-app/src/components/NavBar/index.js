@@ -5,6 +5,8 @@ import LogoutButton from '../auth/LogoutButton';
 import { useSelector } from 'react-redux'
 import Modal from "react-modal";
 import './NavBar.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCaretSquareDown} from '@fortawesome/free-regular-svg-icons'
 
 import topmtgImage from '../../images/TopMTG.png';
 import profile from '../../images/profile.png';
@@ -14,7 +16,7 @@ const NavBar = () => {
   const isAuthenticated = useSelector(state => state.session.user)
 
   function flipModal() {
-    setIsModalOpen(true);
+    setIsModalOpen(!isModalOpen);
   }
 
   function closeModal() {
@@ -50,27 +52,33 @@ const NavBar = () => {
             </>
           }
           
-          {isAuthenticated && <LogoutButton />}
+          
+          
+          {isAuthenticated &&  
+            <>
+            <button  onClick={flipModal} className= "navbar-modal"> 
+              {isAuthenticated.username + " "}
+              <FontAwesomeIcon icon={faCaretSquareDown} />  
+            </button>
 
+              <Modal
+              isOpen={isModalOpen}
+              className="navbar-modal"
+              onRequestClose={flipModal}
+              overlayClassName="navbar-modal__overlay"
+              ariaHideApp={false}
+              parentSelector={() => document.querySelector(".navbar-modal")}
+              >
+              {isAuthenticated && <LogoutButton />}
+              </Modal>
+            </>
+          }  
+         
+          
           </div>
          
-          {/* <button onClick={flipModal} className="navbar-profile">
-            <img src={profile} className="navbar-profile__image" alt="create" />
-          </button>
           
           
-          <Modal
-            isOpen={isModalOpen}
-            className="navbar-modal"
-            overlayClassName="navbar-modal__overlay"
-            ariaHideApp={false}
-            parentSelector={() => document.querySelector(".navbar-profile")}
-          >
-           
-
-
-            
-          </Modal> */}
     </nav>
   );
 }

@@ -11,19 +11,55 @@
     background: linear-gradient(0.25turn, #2c2c2c, #1426c2 );
     z-index: 5;
     box-shadow: 0px 5px 0.4em black;
-}
-
-
-.navbar-container *{
     margin: 0px;
 }
 
+.navbar-modal__overlay{
+    border-radius: 10px;
+    position: absolute;
+    background-color: black;
+
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 5px;
+    border-color: black;
+    box-shadow: 2px 2px 0.4em black;
+}
+
+.modal-logout{
+    border-radius: 8px;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    box-shadow: 2px 2px 0.4em black;
+}
+
+
+
+.navbar-modal{
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    position: relative;
+    margin-top: 10px;
+    padding-bottom: 0px;
+}
+
+
+
 .auth-links__container{
+    font-size: 30px;
     display:flex;
     flex-direction: row;
 }
 
 .auth-link{
+    margin: 10px;
+}
 
+.auth-link a{
+    color: white;
     margin: 10px;
 }

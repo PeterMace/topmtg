@@ -9,7 +9,7 @@ const LogoutButton = ({closeModal}) => {
     //closeModal();
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <button className="modal-logout" onClick={onLogout}>Logout</button>;
 };
 
 export default LogoutButton;
