@@ -35,13 +35,13 @@ const NavBar = () => {
           <div className="auth-links__container">
             { isAuthenticated && 
               <div className="auth-link">
-                  <NavLink to='/login' exact={true} activeClassName='active'>
+                  <NavLink to='/decks/create' exact={true} activeClassName='active'>
                     Create Deck
                   </NavLink>
               </div>
             }
               <div className="auth-link">
-                <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                <NavLink to='/decks' exact={true} activeClassName='active'>
                   Browse Decks
                 </NavLink>
               </div >
