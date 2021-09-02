@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { createDeck } from '../../store/deck';
 import './CreateDeckForm.css'
+import { useHistory } from "react-router-dom";
 
 export const CreateDeckForm = () => {
     const [errors, setErrors] = useState([]);
@@ -9,12 +10,17 @@ export const CreateDeckForm = () => {
     const [description, setDescription] = useState('');
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
+    const history = useHistory();
+
   
     const onSubmit = async (e) => {
         e.preventDefault();
         const data = await dispatch(createDeck(name, description, user));
-        if (data) {
-          setErrors(data)
+        console.log(data);
+        if ('errors' in data) {
+          setErrors(data.errors)
+        }else{
+            history.push(`/decks/${data.id}`)
         }
     };
 

@@ -20,8 +20,9 @@ export const DeckList = () => {
     return (
     <div className="decklist-page">
         <div className="decklist-container">
+            
             {decksList?.map((deck)=>{
-                
+
                 return (
                     <NavLink key={deck.id} to={`/decks/${deck.id}`}> {deck.name}
                     </NavLink>

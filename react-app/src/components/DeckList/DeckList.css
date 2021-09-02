@@ -1,8 +1,8 @@
 .decklist-container{
-    position: relative;
-    margin-left: 40em;
-    left:40%;
-    width: 10em;
+    display: flex;
+    flex-wrap: wrap;
+    position: center;
+    
 }
 
 .decklist-page{
