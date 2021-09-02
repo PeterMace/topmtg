@@ -9,3 +9,10 @@
     height: 100%;
     z-index: -3;
 }
+
+.createdeckform-container{
+    position: relative;
+    left: 50%;
+    margin-top: 5%;
+    float: left;
+}

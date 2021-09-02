@@ -2,7 +2,10 @@
     display: flex;
     flex-wrap: wrap;
     position: center;
-    
+    margin-right: auto;
+    margin-left: auto;
+    width: 20em;
+    padding-top:20em;
 }
 
 .decklist-page{

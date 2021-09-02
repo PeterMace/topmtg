@@ -37,7 +37,7 @@ export const CreateDeckForm = () => {
 
     return (
     <div className="createdeck-page">
-        <div className="form--container">
+        <div className="createdeckform-container">
             <form onSubmit ={onSubmit} className="form">
                 <div className="form-center">
                     <h3> Create a Deck </h3>
