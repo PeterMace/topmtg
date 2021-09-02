@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { createDeck } from '../../store/deck';
+import './CreateDeckForm.css'
 
 export const CreateDeckForm = () => {
     const [errors, setErrors] = useState([]);
@@ -29,33 +30,42 @@ export const CreateDeckForm = () => {
 
 
     return (
-    <div className="form--container">
-        <form onSubmit ={onSubmit} className="form">
-            <div>
-                { errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-                ))}
-            </div>
-            <div>
-                <label>Deck Name</label>
-                <input
-                type='text'
-                name='name'
-                onChange={updateName}
-                value={name}
-                ></input>
-            </div>
-            <div>
-                <label>Description</label>
-                <input
-                type='text'
-                name='description'
-                onChange={updateDescription}
-                value={description}
-                ></input>
-            </div>
-            <button type='submit'>Create Deck</button>
-        </form>
+    <div className="createdeck-page">
+        <div className="form--container">
+            <form onSubmit ={onSubmit} className="form">
+                <div className="form-center">
+                    <h3> Create a Deck </h3>
+                </div>
+                <div>
+                    { errors.map((error, ind) => (
+                    <div key={ind}>{error}</div>
+                    ))}
+                </div>
+                <div>
+                    <label>Deck Name</label>
+                    <br />
+                    <input
+                    type='text'
+                    name='name'
+                    onChange={updateName}
+                    value={name}
+                    ></input>
+                </div>
+                <div>
+                    <label>Description</label>
+                    <br />
+                    <textarea
+                    name='description'
+                    onChange={updateDescription}
+                    value={description}
+                    ></textarea>
+                </div>
+                <br />
+                <div className="form-center">
+                    <button type='submit'>Create Deck</button>
+                </div>
+            </form>
+        </div>
     </div>
     )
 }
