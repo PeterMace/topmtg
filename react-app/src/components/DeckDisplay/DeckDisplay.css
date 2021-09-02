@@ -11,7 +11,7 @@
     text-align: center;
 }
 
-.deck-description{
+.deck-description--display{
     grid-column: 2 / 3;
     grid-row: 3;
     text-align: center;
@@ -37,3 +37,5 @@
     grid-column: 3 / 3;
     grid-row: 3;
 }
+
+

@@ -33,6 +33,9 @@ export const UpdateDeckForm = ({deck, hideForm}) => {
     return (
     <div className="form--container">
         <form onSubmit ={onSubmit} className="form">
+            <div className="form-center">
+                <h3> Update Deck </h3>
+            </div>
             <div>
                 { errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
@@ -40,6 +43,7 @@ export const UpdateDeckForm = ({deck, hideForm}) => {
             </div>
             <div>
                 <label>Deck Name</label>
+                <br />
                 <input
                 type='text'
                 name='name'
@@ -49,6 +53,7 @@ export const UpdateDeckForm = ({deck, hideForm}) => {
             </div>
             <div>
                 <label>Description</label>
+                <br />
                 <input
                 type='text'
                 name='description'
@@ -56,7 +61,10 @@ export const UpdateDeckForm = ({deck, hideForm}) => {
                 value={description}
                 ></input>
             </div>
-            <button type='submit'>Update Deck</button>
+            <br />
+            <div className="form-center">
+                <button type='submit'>Update Deck</button>
+            </div>
         </form>
     </div>
     )
