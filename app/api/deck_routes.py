@@ -26,7 +26,6 @@ def deck_form():
 
 
 @deck_routes.route('all/')
-@login_required
 def get_all_decks():
     decks = Deck.query.all()
     return {'decks': [deck.to_dict() for deck in decks]}    

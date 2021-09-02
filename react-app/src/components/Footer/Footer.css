@@ -1,0 +1,22 @@
+.footer-container{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    background-color: gray;
+    display:flex;
+    align-items: center;
+    height: 95px;
+    justify-content: center;
+}
+
+.github-icon{
+    height: 80px;
+    width:auto;
+    margin: 20px;
+}
+
+.linkedin-icon{
+    height: 80px;
+    width:auto;    
+    margin: 20px;
+}
