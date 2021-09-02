@@ -1,0 +1,9 @@
+.deleteContainer{
+    /* flex-wrap: nowrap; */
+    position: relative;
+}
+
+.notdisplayed {
+    display: none;
+}
+  
