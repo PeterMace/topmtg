@@ -1,8 +1,8 @@
 
 
 .navbar-container{
-    position: sticky;
-    width: auto;
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;

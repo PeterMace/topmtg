@@ -20,12 +20,22 @@ export const DeckList = () => {
     return (
     <div className="decklist-page">
         <div className="decklist-container">
-            
+            <div className="decklist-title">
+                <h3> Recently Created Community Decks </h3>
+                {/* <p> These decks were recently created by our community          </p> */}
+            </div>
             {decksList?.map((deck)=>{
-
                 return (
-                    <NavLink key={deck.id} to={`/decks/${deck.id}`}> {deck.name}
-                    </NavLink>
+                    <div className="decklist-card">
+                        <NavLink key={deck.id} to={`/decks/${deck.id}`}>
+                            <div className="deck-name"> 
+                                {deck.name}
+                            </div>
+                            <div className="deck-description"> 
+                                Description: {deck.description}
+                            </div>
+                        </NavLink>
+                    </div>
                 )
             })}
         </div>
