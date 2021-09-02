@@ -1,4 +1,4 @@
-TopMTG is an application for Magic The Gathering players to build their own trading card decks. This project was created by Peter Mace as a Full Stack Capstone project for App Academy.
+TopMTG is an application for Magic The Gathering players to build their own trading card decks. This project was created by Peter Mace as a full stack capstone project for App Academy.
 
 Technologies Used:
 
