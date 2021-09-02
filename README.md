@@ -38,7 +38,13 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+6. To run the React App in development, start this application from this location using `npm start`.
+
+
+No environment variables are needed to run this application in development, but be sure to set the REACT_APP_BASE_URL environment variable in heroku!
+
+This app will be automatically built when you deploy to heroku, please see the `heroku-postbuild` script in your `express.js` applications `package.json` to see how this works.
+
 
 ***
 *IMPORTANT!*
