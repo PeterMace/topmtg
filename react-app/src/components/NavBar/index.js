@@ -32,8 +32,19 @@ const NavBar = () => {
             </NavLink>
           </div>
         
-          <div>
-
+          <div className="auth-links__container">
+            { isAuthenticated && 
+              <div className="auth-link">
+                  <NavLink to='/login' exact={true} activeClassName='active'>
+                    Create Deck
+                  </NavLink>
+              </div>
+            }
+              <div className="auth-link">
+                <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                  Browse Decks
+                </NavLink>
+              </div >
           </div>
 
           <div className="auth-links__container">
@@ -69,7 +80,7 @@ const NavBar = () => {
               ariaHideApp={false}
               parentSelector={() => document.querySelector(".navbar-modal")}
               >
-              {isAuthenticated && <LogoutButton />}
+              {isAuthenticated && <LogoutButton closeModal={flipModal} />}
               </Modal>
             </>
           }  

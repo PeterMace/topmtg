@@ -6,7 +6,7 @@ const LogoutButton = ({closeModal}) => {
   const dispatch = useDispatch()
   const onLogout = async (e) => {
     await dispatch(logout());
-    //closeModal();
+    closeModal();
   };
 
   return <button className="modal-logout" onClick={onLogout}>Logout</button>;
