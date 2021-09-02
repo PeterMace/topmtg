@@ -21,7 +21,7 @@ body::after {
 .form--container{
     position: relative;
     left: 50%;
-    margin-top: 20%;
+    margin-top: 15%;
     float: left;
 }
 
@@ -30,12 +30,13 @@ body::after {
     flex-direction: column;
     position: relative;
     left: -50%;
-    bottom: -50%;
+    bottom: -45%;
     background: #d3dfff;
     box-sizing: border-box;
     border-radius: 5px;
     color: #0f2840;
     box-shadow: 1px 1px 3px #0f2840;
+    padding: 25px;
 }
 
 .form input{
@@ -44,6 +45,14 @@ body::after {
     border-radius: 5px;
     color: #0f2840;
     box-shadow: 1px 1px 3px #0f2840;
+}
+.form textarea{
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #0f2840;
+    box-shadow: 1px 1px 3px #0f2840;
+    padding: 45px;
 }
 
 
@@ -61,4 +70,9 @@ button{
 
 a{
     text-decoration: none;
+}
+
+.form-center{
+    display: flex;
+    justify-content: center;
 }
