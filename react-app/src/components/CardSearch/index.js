@@ -30,17 +30,21 @@ export const CardSearch = ({deckId}) => {
     deckId = parseInt(deckId);
     return (
         <div>
-            <label>Card Name</label>
-            <SearchField
-            onChange={updateCardName}
-            searchText="Search for a card"
-            classNames="test-class"
-            />
+            <div className="form-center">
+                <label>Search for a card to add</label>
+            </div>
+            <div className="form-center">
+                <SearchField
+                onChange={updateCardName}
+                searchText="Search for a card"
+                classNames="test-class"
+                />
+            </div>
             <ul>
             {results?.map((card)=>(
                     <li key={card.id}>
                         <span className="search-result">
-                            <img height="50px"src={card.small_url} ></img>
+                            <img key={card.id} height="50px"src={card.small_url} ></img>
                             {card.name}
                             <AddDeckCard cardId={card.id} deckId={deckId} />
                         </span>

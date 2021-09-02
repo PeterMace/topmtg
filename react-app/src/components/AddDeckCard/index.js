@@ -1,6 +1,10 @@
 import React from 'react'
 import { addDeckCard } from '../../store/deck_cards';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
+import gitHub from '../../images/github.png';
+import linkedIn from '../../images/linkedIn.png';
+import addcard from '../../images/add-card.png';
+import './AddDeckCard.css'
 
 export const AddDeckCard = ({cardId, deckId}) => {
     const dispatch = useDispatch();
@@ -10,6 +14,8 @@ export const AddDeckCard = ({cardId, deckId}) => {
     };
 
     return (
-            <button className="addCard-Button" onClick={onAdd}>+</button>
+        <div className="addCard-Button" >
+            <img src={addcard} onClick={onAdd} className="addCard-Button"></img>
+        </div>
     )
 }

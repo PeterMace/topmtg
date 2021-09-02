@@ -1,9 +1,20 @@
 .search-result{
     display: flex;
     align-items: center;
-    justify-content: fle;
+    justify-content: space-between;
+    width: 300px;
+    margin-left: -20px;
 }
 
 .addCard-Button{
     justify-content: right;
+}
+
+.searchfield{
+    width: 350px;
+    margin-left: auto;
+}
+
+.react-search-field{
+    width: 320px;
 }

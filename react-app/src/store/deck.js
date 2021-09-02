@@ -35,11 +35,11 @@ export const createDeck = (name, description, user) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(addDeck(data))
-        return null;
+        return data;
     } else if (response.status < 500) {
         const data = await response.json();
-        if (data.errors) {
-            return data.errors;
+        if (data) {
+            return data;
         }
     } else {
         return ['An error occurred. Please try again.']
