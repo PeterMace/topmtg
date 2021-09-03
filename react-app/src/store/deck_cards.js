@@ -14,9 +14,9 @@ const addCard = (payload) => ({
   payload
 });
 
-const removeCard = (id) => ({
+const removeCard = (payload) => ({
   type: REMOVE_CARD,
-  id
+  payload
 });
 
 
@@ -67,8 +67,8 @@ export const getDeckCards = (id) => async (dispatch) => {
   }
 }
 
-export const fetchDeckCard = (cardId, deckId) => async (dispatch) => {
-  const response = await fetch(`/api/decks/${deckId}/delete`, {
+export const deleteDeckCard = (cardId, deckId) => async (dispatch) => {
+  const response = await fetch(`/api/decks/${deckId}/card/delete`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -79,9 +79,9 @@ export const fetchDeckCard = (cardId, deckId) => async (dispatch) => {
   });
   
   if (response.ok) {
-      const deckId = await response.json();
-      //dispatch(removeDeck(deckId.id))
-      return deckId;
+      const data = await response.json();
+      dispatch(removeCard(data))
+      return null;
   } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) {
@@ -120,7 +120,8 @@ export default function reducer(state = initialState, action) {
           }
         case REMOVE_CARD: {
             const newState = { ...state };
-            delete newState[ action.id];
+            const deletedIndex = newState[action.payload.deckId].indexOf(action.payload.cardId);
+            newState[action.payload.deckId].splice(deletedIndex, 1);
             return newState;
           }
           default: {

@@ -96,3 +96,20 @@ def add_deck_card(deckId):
         return {'cardId':content['cardId'],'deckId':deckId}
 
 
+@deck_routes.route('/<int:deckId>/card/delete', methods=['POST'])
+@login_required
+def delete_deck_card(deckId):
+    content = request.json
+    deck_card_delete = deck_cards.delete().where(
+        deck_cards.c.card_id == content['cardId'], 
+        deck_cards.c.deck_id == deckId
+    )
+
+    deck = Deck.query.get(deckId)
+    if current_user.id == deck.userId:
+        db.session.execute(deck_card_delete) 
+        db.session.commit()
+        return {'cardId':content['cardId'],'deckId':deckId}
+
+
+
