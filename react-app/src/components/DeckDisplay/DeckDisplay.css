@@ -5,15 +5,18 @@
     grid-auto-rows: minmax(100px, auto);
 }
 
-.deck-name{
+.deckdisplay-name{
     grid-column: 2 / 3;
     grid-row: 2;
     text-align: center;
+    font-size: 36px;
 }
 
 .deck-description--display{
+    border-style: solid;
     grid-column: 2 / 3;
     grid-row: 3;
+    border-radius: 3px;
 }
 
 .card-search{
