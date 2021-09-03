@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 import SearchField from "react-search-field";
 import { AddDeckCard } from '../AddDeckCard';
 import './CardSearch.css';
@@ -6,6 +7,8 @@ import './CardSearch.css';
 export const CardSearch = ({deckId}) => {
     const [cardName, setCardName] = useState('');
     const [results, setResults] = useState([]);
+    const userId = useSelector(state => state.session.user?.id);
+    const decks = useSelector(state => state.deck);
 
     useEffect(()=>{
         async function fetchCardResults(){
@@ -28,11 +31,16 @@ export const CardSearch = ({deckId}) => {
     };
     
     const resetSearch = () =>{
-        setCardName("");
+        // setCardName("");
+        console.log("cardName", cardName);
         setResults([]);
+        setCardName("");
+        updateCardName("");
+        console.log("cardName", cardName);
     }
 
     deckId = parseInt(deckId);
+    const isOwner = decks[deckId]?.userId === userId;
     return (
         <div>
             <div className="form-center">
@@ -40,6 +48,7 @@ export const CardSearch = ({deckId}) => {
             </div>
             <div className="form-center">
                 <SearchField
+                value={cardName}
                 onChange={updateCardName}
                 searchText="Search for a card"
                 classNames="test-class"
@@ -51,7 +60,7 @@ export const CardSearch = ({deckId}) => {
                         <span className="search-result">
                             <img key={card.id} height="50px"src={card.small_url} ></img>
                             {card.name}
-                            <AddDeckCard cardId={card.id} deckId={deckId} resetSearch={resetSearch}/>
+                            {isOwner && <AddDeckCard cardId={card.id} deckId={deckId} resetSearch={resetSearch}/>}
                         </span>
                     </li>
             ))}

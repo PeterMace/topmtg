@@ -49,7 +49,7 @@ export const DeckDisplay = () => {
 
     return (
         <div className="deck-container">
-            <div className="deck-name">
+            <div className="deckdisplay-name">
                 {deck?.name}
             </div>
             <div className="deck-description--display">
