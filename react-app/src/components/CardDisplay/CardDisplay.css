@@ -9,3 +9,9 @@
 }
 
 
+.ownedcard img:hover {
+    background-color: red;
+    padding: 10px;
+    border-radius: 4px;
+  }
+

@@ -26,16 +26,16 @@ export const DeckList = () => {
             </div>
             {decksList?.map((deck)=>{
                 return (
-                    <div className="decklist-card">
-                        <NavLink key={deck.id} to={`/decks/${deck.id}`}>
+                    <NavLink key={deck.id} to={`/decks/${deck.id}`}>
+                        <div className="decklist-card">
                             <div className="deck-name"> 
                                 {deck.name}
                             </div>
                             <div className="deck-description"> 
                                 Description: {deck.description}
                             </div>
-                        </NavLink>
-                    </div>
+                        </div>
+                    </NavLink>
                 )
             })}
         </div>

@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import './CardDisplay.css';
 
 export const CardDisplay = ({deckId}) => {
-    const deck_cards = useSelector(state => state.deck_cards);
     const cards = useSelector(state => state.card);
+    const userId = useSelector(state => state.session.user?.id);
+    const deck_cards = useSelector(state => state.deck_cards);
+    const deck = useSelector(state => state.deck);
     const cards_needed = deck_cards[deckId]
 
     const dispatch = useDispatch();
@@ -25,9 +27,10 @@ export const CardDisplay = ({deckId}) => {
         console.log(cardId, deckId);
     }
 
+    const isOwner = deck[deckId]?.userId === userId;
     deckId = parseInt(deckId);
     return (
-        <div className="card-container">    
+        <div className={isOwner ? "ownedcard card-container":"card-container"}>    
             {cards && cards_needed?.map((card)=>(        
                 <img  
                 height="320px"

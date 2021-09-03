@@ -2,11 +2,12 @@
 .login-page{
     background: url('../../../images/signup-background.jpg') no-repeat;
     display: block;
-    padding-bottom: 47%;
+    padding-bottom: 48%;
     padding-left: auto;
     padding-left: auto;
     position: center;
     width: 100%;
     height: 100%;
     z-index: -3;
+    background-size: cover;
 }
