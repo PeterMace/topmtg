@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector } from 'react-redux';
-import SearchField from "react-search-field";
 import { AddDeckCard } from '../AddDeckCard';
 import './CardSearch.css';
 
@@ -26,16 +25,16 @@ export const CardSearch = ({deckId}) => {
         fetchCardResults()
     }, [cardName])
 
-    const updateCardName = (value, e) => {
-        setCardName(value);
+    const updateCardName =  (e) => {
+        setCardName(e.target.value);
     };
     
-    const resetSearch = () =>{
+    const resetSearch = async () =>{
         // setCardName("");
         console.log("cardName", cardName);
-        setResults([]);
-        setCardName("");
-        updateCardName("");
+        await setResults([]);
+        await setCardName("");
+        // await updateCardName("");
         console.log("cardName", cardName);
     }
 
@@ -47,10 +46,10 @@ export const CardSearch = ({deckId}) => {
                 <label>Search for a card to add</label>
             </div>
             <div className="form-center">
-                <SearchField
+                <input
                 value={cardName}
                 onChange={updateCardName}
-                searchText="Search for a card"
+                placeHolder="Search for a card"
                 classNames="test-class"
                 />
             </div>
