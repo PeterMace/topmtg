@@ -21,17 +21,17 @@ export const CreateCommentForm = ({deckId}) => {
         if ('errors' in data) {
             setErrors(data.errors)
         }
-        // else{
-        //     history.push(`/decks/${data.id}`)
-        // }
+        else{
+            window.location.reload();
+        }
       };
 
     
     return (
         <>
             { userId && (
-                <form onSubmit={handleSubmit} className='photo-form'>
-                    <h3> Comments </h3>
+                <form onSubmit={handleSubmit}>
+                    
                     {errors.map((error)=>(
                         <p key={error}>{error}</p>
                     ))}

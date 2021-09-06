@@ -53,6 +53,17 @@ export const DeckDisplay = () => {
             <div className="deckdisplay-name">
                 {deck?.name}
             </div>
+            <div className="deck-instructions">
+                <h4> Instructions </h4>
+                This app will help you quickly build a Commander Deck. Commander is the most popular format of playing Magic the Gathering.
+                Commander restricts the deck to have only one copy of any card printed. You cannot add more than one of any card, except land cards(forest, island, etc)
+                <br />
+                <br />
+                To add a card to one of your decks, simply type the card into the search field to the right. Hit the plus button.
+                <br />
+                <br />
+                To remove a remove a card to one of your decks, hover over the card and click.
+            </div>
             <div className="deck-description--display">
                 Description: {deck?.description}
             </div>
@@ -62,14 +73,16 @@ export const DeckDisplay = () => {
                 {isOwner ? <button onClick={() => setShowEditForm(!showEditForm)}>Edit Deck</button> : null}
                 {isOwner ? <button onClick={handleDelete}>Delete Deck</button> : null}
             </div>
-                <div className="card-search">
-                    <div className="form-center">
+            <div className="card-search">
+                <div className="form-center">
                     <CardSearch deckId={deckId} />
-                    </div>
-                </div>
+                </div> 
+            </div>
         
             <div className="deck-cards">
                 <CardDisplay deckId={deckId} />
+            </div>
+            <div className="comment-section">
                 <CommentSection  deckId={deckId} />
             </div>
         </div>
