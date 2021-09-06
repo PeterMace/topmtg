@@ -59,10 +59,8 @@ def update_deck(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         content = request.json
-        
         deck.name =  form.data['name'],
         deck.description = form.data['description'],
-
         db.session.add(deck)
         db.session.commit()
         return deck.to_dict();
@@ -87,7 +85,6 @@ def add_deck_card(deckId):
         card_id = content['cardId'], 
         deck_id = deckId
     )
-
     deck = Deck.query.get(deckId)
     if current_user.id == deck.userId:
         db.session.execute(deck_card_insert) 

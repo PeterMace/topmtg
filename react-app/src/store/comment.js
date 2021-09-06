@@ -23,6 +23,7 @@ export const fetchComments = (deckId) => async dispatch => {
     if (response.ok) {
       const comments = await response.json();
       dispatch(loadComments(comments));
+      return comments;
     }
   };
 
@@ -63,6 +64,8 @@ export const editComment = (comment) => async dispatch => {
       dispatch(addComment(editedComment))
       return editedComment;
     }
+    return response;
+    
   }
 
 export const deleteComment = (comment) => async dispatch => {

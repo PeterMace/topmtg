@@ -36,5 +36,32 @@ def deck_comments(deck_id):
     comments = {comment.id : comment.to_dict() for comment in comments}
     return comments
 
+@comment_routes.route('/<int:comment_id>/edit', methods=['PUT'])
+@login_required
+def edit_comments(comment_id):
+    #form = CommentForm()
+    #form['csrf_token'].data = request.cookies['csrf_token']
+    comment = Comment.query.get(comment_id)
+    content = request.json
+    #if form.validate_on_submit():
+    print("requested dater", content['content'])
+    comment.content =  content['content']
+    comment_length = len(content['content'])
+    if  comment_length < 450 and comment_length > 0:
+        db.session.add(comment)
+        db.session.commit()
+        return {"comment": comment.to_dict()}
+    return {'errors': {"comment" : "comment must be present and less than 450"}}, 500
+    
+    
+
+
+@comment_routes.route('/<int:comment_id>/delete', methods=['DELETE'])
+@login_required
+def delete_comment(comment_id):
+    comment = Comment.query.get(comment_id)
+    db.session.delete(comment);
+    db.session.commit()
+    return {"commentId": comment_id}
 
 

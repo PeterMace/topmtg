@@ -68,6 +68,9 @@ ul {
 
 button{
     border-radius: 3px;
+    border: solid 1px;
+    background-color: #949494;
+    margin: 2px;
 }
 
 a{

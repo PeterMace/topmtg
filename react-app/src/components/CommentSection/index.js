@@ -3,40 +3,38 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchComments, } from '../../store/comment';
 import { useHistory } from 'react-router-dom';
 import { CreateCommentForm } from '../CreateCommentForm'
-// import CommentDetail from '../CommentDetail';
-
+import CommentDetail from '../CommentDetail';
+import './CommentSection.css';
 
 export const CommentSection = ({deckId}) => {
-    //const photos = useSelector(state => state.photos);
     const userId = useSelector(state => state.session.user?.id);
+    const stateComments = useSelector(state => state);
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [content, setContent] = useState('');
+    const [comments, setComments] = useState('');
     const [errors, setErrors] = useState([]);
-
-
-    const comments = useSelector(state => state.comments);
 
     useEffect(() => {
         async function fetchData() {
-          await dispatch(fetchComments(deckId));
+          const data = await dispatch(fetchComments(deckId));
+          setComments({...data});
         }
         fetchData();
-        console.log(comments);
     }, [])
 
-    
-    // if (!comments?.length) {
-    //     return null;
-    // }
     return (
+        
         <div>
-          {/* { comments.map((comment) => {
+          <h3> Comments </h3>
+          {comments &&  Object.keys(comments).map(function(keyName, keyIndex) {
             return (
-              <CommentDetail comment={comment} />
+              <div className="comment">
+                <CommentDetail key={comments[keyName].id} comment={comments[keyName]} />
+              </div>
             );
-          })} */}
+          })}
+            <br />
             < CreateCommentForm deckId={deckId} />
         </ div>
     );
