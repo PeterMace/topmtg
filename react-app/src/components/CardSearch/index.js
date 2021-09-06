@@ -49,8 +49,7 @@ export const CardSearch = ({deckId}) => {
                 <input
                 value={cardName}
                 onChange={updateCardName}
-                placeHolder="Search for a card"
-                classNames="test-class"
+                placeholder="Search for a card"
                 />
             </div>
             <ul>

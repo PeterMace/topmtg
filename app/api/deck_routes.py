@@ -6,7 +6,6 @@ from app.forms import DeckForm
 from app.api.error_handler import validation_errors_to_error_messages
 deck_routes = Blueprint('decks', __name__)
 
-
 @deck_routes.route('/', methods=['GET', 'POST'])
 @login_required
 def deck_form():
