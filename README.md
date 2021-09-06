@@ -5,20 +5,25 @@
 Click [here](https://topmtg.herokuapp.com/) to view the live project.
 
 #  Technologies Used
-Frontend
-[React](https://reactjs.org/docs/react-api.html)
-[Redux](https://redux.js.org/api/api-reference)
-Backend
-[Flask](https://flask.palletsprojects.com/en/2.0.x/)
-[Postgres](https://www.postgresql.org/docs/)
-[Sqlalchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
-Data sources
+## Frontend
+### [React](https://reactjs.org/docs/react-api.html)
+### [Redux](https://redux.js.org/api/api-reference)
+
+## Backend
+
+### [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+
+### [Postgres](https://www.postgresql.org/docs/)
+
+### [Sqlalchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/)
+
+## Data sources
 [Scryfall API](https://scryfall.com/docs/api)
 
 
 # Documentation
-Database Schema
-User Stories
-Feature List
-API Routes
+## [Database Schema](https://github.com/PeterMace/topmtg/wiki/Database-Schema)
+## [User Stories](https://github.com/PeterMace/topmtg/wiki/User-Stories)
+## Feature List
+## API Routes
   
