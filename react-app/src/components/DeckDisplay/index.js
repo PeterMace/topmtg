@@ -7,6 +7,7 @@ import './DeckDisplay.css';
 import { UpdateDeckForm } from '../UpdateDeckForm';
 import { CardSearch } from '../CardSearch';
 import { CardDisplay } from '../CardDisplay'
+import { CommentSection } from '../CommentSection'
 import { useHistory } from "react-router-dom";
 
 export const DeckDisplay = () => {
@@ -69,6 +70,7 @@ export const DeckDisplay = () => {
         
             <div className="deck-cards">
                 <CardDisplay deckId={deckId} />
+                <CommentSection  deckId={deckId} />
             </div>
         </div>
     )

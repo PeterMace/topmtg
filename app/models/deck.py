@@ -15,6 +15,7 @@ class Deck(db.Model):
     card = db.relationship("Card", back_populates="commander_card")
     deck_cards = db.relationship('Card', secondary=deck_cards, lazy='subquery',
         backref=db.backref('decks', lazy=True))
+    comments = db.relationship("Comment", back_populates="deck")
 
     def to_dict(self):
         return {
