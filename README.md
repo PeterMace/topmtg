@@ -70,6 +70,6 @@ def seed_cards():
             db.session.commit()
 ```
 
-Description:A
+Description:
 This uses an environment variable set to the url of the Scryfall bulkdata. The requests python library pulls the data and we insert using the add_all. This can take upwards of an hour to generate all 29000+ card records. This is dramatically faster when run in a detached shell.  
   
