@@ -25,7 +25,7 @@
 
 # Code Snippets
 
-###Card Search
+### Card Search
 Location: topmtg/app/api/card_routes.py/
 ```
 @card_routes.route('/search/<cardName>')
@@ -43,7 +43,7 @@ def search_cards(cardName):
 Description:
 This handles the card search input from the frontend. Converting to lowercase improves ease of use and limits results to 20(out of 29000+) cards making response times much faster.
 
-###Scryfall API - Card seeding
+### Scryfall API - Card seeding
 Location: topmtg/app/seeds/cards.py/
 ```
 # pull the external url of the bulk data store from Scryfall API. Then pulls out card data, and adds to database.
