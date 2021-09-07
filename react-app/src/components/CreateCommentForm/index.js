@@ -22,7 +22,8 @@ export const CreateCommentForm = ({deckId}) => {
             setErrors(data.errors)
         }
         else{
-            window.location.reload();
+            history.push('/');
+            history.push(`/decks/${deckId}`);
         }
       };
 

@@ -18,7 +18,8 @@ const CommentDetail = ({comment}) => {
     const handleDelete = async (e) => {
         e.preventDefault();
         const dispatchPhoto = await dispatch(deleteComment(comment));
-        window.location.reload();
+        history.push('/');
+        history.push(`/decks/${comment.deckId}`);
     }
     
     if (!comment) {
