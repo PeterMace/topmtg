@@ -47,9 +47,11 @@ def search_cards(cardName):
 Description:
 This handles the card search input from the frontend. Converting to lowercase improves ease of use and limits results to 20(out of 29000+) cards making response times much faster.
 
-![image](https://github.com/PeterMace/topmtg/blob/main/Reference%20Docs/cardseed.PNG)
 
 ### Scryfall API - Card seeding
+
+![image](https://github.com/PeterMace/topmtg/blob/main/Reference%20Docs/cardseed.PNG)
+
 Location: topmtg/app/seeds/cards.py/
 ```
 # pull the external url of the bulk data store from Scryfall API. Then pulls out card data, and adds to database.
