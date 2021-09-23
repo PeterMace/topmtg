@@ -24,7 +24,8 @@ const EditCommentForm = ({comment, hideForm}) => {
             }    
             const dispatchComment = await dispatch(editComment(payload));
             hideForm();
-            window.location.reload();
+            history.push('/');
+            history.push(`/decks/${comment.deckId}`);
             
         } else{
             setErrors(["Comment must be not empty and less than 450 characters"])

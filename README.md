@@ -3,6 +3,7 @@
 [TopMTG](https://topmtg.herokuapp.com/) is an application for Magic The Gathering players to build their own trading card decks. This app caters to building Commander decks, which is the most popular playing format of the most popular card game. Commander restricts players to have only one copy of each card. Users are able to search all 29000+ cards pulled from the scryfall API to quickly add cards to their deck. They can also create their own decks, and comment on others. This project was created by Peter Mace as a full stack capstone project for App Academy.
 
 [Click here to view the live project.](https://topmtg.herokuapp.com/)
+
 [Wiki](https://github.com/PeterMace/topmtg/wiki)
 
 #  Technologies Used
@@ -26,6 +27,9 @@
 # Code Snippets
 
 ### Card Search
+
+![image](https://github.com/PeterMace/topmtg/blob/main/Reference%20Docs/cardsearch.PNG)
+
 Location: topmtg/app/api/card_routes.py/
 ```
 @card_routes.route('/search/<cardName>')
@@ -43,7 +47,11 @@ def search_cards(cardName):
 Description:
 This handles the card search input from the frontend. Converting to lowercase improves ease of use and limits results to 20(out of 29000+) cards making response times much faster.
 
+
 ### Scryfall API - Card seeding
+
+![image](https://github.com/PeterMace/topmtg/blob/main/Reference%20Docs/cardseed.PNG)
+
 Location: topmtg/app/seeds/cards.py/
 ```
 # pull the external url of the bulk data store from Scryfall API. Then pulls out card data, and adds to database.
